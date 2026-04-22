@@ -3,25 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página com Emoji</title>
+    <title>Emoji Sorrindo com CSS3</title>
     <style>
+        /* Variáveis CSS3 para facilitar mudanças de cores */
+        :root {
+            --primary-color: #007bff;
+            --text-color: #333;
+            --bg-color: #f0f2f5;
+            --emoji-size: 144px;
+        }
+
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
         }
-        .emoji {
-            width: 177px;
-            height: 177px;
+
+        /* Estilização da tag de imagem com CSS3 */
+        .emoji-img {
+            width: var(--emoji-size);
+            height: var(--emoji-size);
+            object-fit: contain;
+            /* Efeito de sombra suave */
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+            /* Transição para o efeito de hover */
+            transition: transform 0.3s ease-in-out;
         }
+
+        /* Efeito interativo ao passar o mouse */
+        .emoji-img:hover {
+            transform: scale(1.1); /* O emoji cresce um pouco */
+        }
+
         nav {
             position: absolute;
             top: 20px;
             right: 20px;
         }
+
         nav ul {
             list-style: none;
             padding: 0;
@@ -29,31 +52,37 @@
             display: flex;
             gap: 20px;
         }
-        nav li {
-            margin: 0;
-        }
+
         nav a {
             text-decoration: none;
-            color: #333;
-            font-weight: bold;
+            color: var(--text-color);
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
         }
+
         nav a:hover {
-            color: #007bff;
+            color: white;
+            background-color: var(--primary-color);
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
         }
     </style>
 </head>
 <body>
-    <main class="main">
-        <img src="minha-figura.png" alt="Emoji pensando" class="emoji">
+
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Sobre</a></li>
+            <li><a href="#">Contato</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Certifique-se de que o arquivo "emoji-sorrindo.png" esteja na mesma pasta -->
+        <img src="emoji-sorrindo.png" alt="Emoji sorrindo" class="emoji-img">
     </main>
-    <section>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Sobre</a></li>
-                <li><a href="#">Contato</a></li>
-            </ul>
-        </nav>
-    </section>
+
 </body>
 </html>
