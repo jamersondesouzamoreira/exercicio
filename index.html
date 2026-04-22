@@ -3,69 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emoji Sorrindo </title>
+    <title>Emoji Sorrindo - CSS3 Pro</title>
     <style>
-        /* Variáveis CSS3 para facilitar mudanças de cores */
+        /* Variáveis de Design (CSS3) */
         :root {
-            --primary-color: #007bff;
-            --text-color: #333;
-            --bg-color: #f0f2f5;
+            --bg-color: #ffffff;
+            --primary-color: #ffcc00;
+            --text-dark: #2d3436;
             --emoji-size: 144px;
+            --transition-smooth: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
         }
 
+        /* Alinhamento Perfeito com Flexbox */
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-color);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            overflow: hidden;
         }
 
-        /* Estilização da tag de imagem com CSS3 */
-        .emoji-img {
-            width: var(--emoji-size);
-            height: var(--emoji-size);
-            object-fit: contain;
-            /* Efeito de sombra suave */
-            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
-            /* Transição para o efeito de hover */
-            transition: transform 0.3s ease-in-out;
+        /* Estilização do Emoji com Efeitos CSS3 */
+        .emoji-central {
+            font-size: var(--emoji-size);
+            line-height: 1;
+            cursor: pointer;
+            user-select: none;
+
+            /* Filtro drop-shadow (melhor que box-shadow para emojis) */
+            filter: drop-shadow(0 15px 20px rgba(0,0,0,0.1));
+            
+            /* Transição e Animação */
+            transition: var(--transition-smooth);
+            animation: bounceIn 1.2s ease-out;
         }
 
-        /* Efeito interativo ao passar o mouse */
-        .emoji-img:hover {
-            transform: scale(1.1); /* O emoji cresce um pouco */
+        /* Interatividade: Crescer e Girar no Hover */
+        .emoji-central:hover {
+            transform: scale(1.2) rotate(10deg);
+            filter: drop-shadow(0 20px 30px rgba(255, 204, 0, 0.4));
         }
 
+        /* Animação de Entrada Estilo "Bounce" */
+        @keyframes bounceIn {
+            0% { transform: scale(0); opacity: 0; }
+            70% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+
+        /* Navegação Estilizada */
         nav {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 30px;
+            right: 40px;
         }
 
         nav ul {
+            display: flex;
+            gap: 25px;
             list-style: none;
             padding: 0;
-            margin: 0;
-            display: flex;
-            gap: 20px;
         }
 
         nav a {
             text-decoration: none;
-            color: var(--text-color);
-            font-weight: 600;
-            padding: 8px 16px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
+            color: var(--text-dark);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            position: relative;
+            transition: color 0.3s ease;
         }
 
-        nav a:hover {
-            color: white;
+        /* Efeito de linha no menu (CSS3 Pseudo-elements) */
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
             background-color: var(--primary-color);
-            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
         }
     </style>
 </head>
@@ -80,8 +107,10 @@
     </nav>
 
     <main>
-        <!-- Certifique-se de que o arquivo "emoji-sorrindo.png" esteja na mesma pasta -->
-        <img src="emoji-sorrindo.png" alt="Emoji sorrindo" class="emoji-img">
+        <!-- O emoji 😊 é um caractere disponível nativamente -->
+        <div class="emoji-central" role="img" aria-label="Rosto Sorrindo">
+            😊
+        </div>
     </main>
 
 </body>
