@@ -1,2 +1,2 @@
-# exercicio
+# exercicio de animação
 atividades
